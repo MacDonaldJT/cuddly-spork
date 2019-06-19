@@ -1,0 +1,50 @@
+import itertools
+
+
+def  superStack(operations):
+    
+    myList = []
+    myStack = []
+    
+    
+    
+    for item in operations:
+        
+        
+        if "push" in item:
+            item = item.split()
+            myStack.append(int(item[-1]))
+            myList.append(int(myStack[-1]))
+            
+        
+        if 'pop' in item:
+            item.split()
+            myStack.pop()
+            
+            if len(myStack) == 0:
+                myList.append("EMPTY")
+            else:
+                myList.append(int(myStack[-1]))
+            
+        
+        if "inc" in item:
+            item = item.split()
+            num1 = int(item[-1])
+            numOfValues = int(item[-2])
+            
+            
+            myStack1 = myStack[0:numOfValues] 
+            myStack2 = myStack[numOfValues:]
+            
+            myStack1 = [num1 + x for x in myStack1]
+            
+                
+            myStack = myStack1 + myStack2
+            
+            myList.append(int(myStack[-1]))
+            
+    for i in myList:
+        print(i)
+            
+            
+        
